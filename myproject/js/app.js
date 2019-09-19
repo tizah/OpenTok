@@ -1,10 +1,21 @@
-// replace these values with those generated in your TokBox Account
-var apiKey = "46424752";
-var sessionId = "1_MX40NjQyNDc1Mn5-MTU2ODkyMDM0MzE1MX43RXd3WVBMNVprU2hHMkVXYlpuMFZmNHl-fg";
-var token = "T1==cGFydG5lcl9pZD00NjQyNDc1MiZzaWc9ZGIzN2FmMmU2MWFkMjgzNmFkOWJhMzU2MWM4NDgwM2IzMThjNGZjNzpzZXNzaW9uX2lkPTFfTVg0ME5qUXlORGMxTW41LU1UVTJPRGt5TURNME16RTFNWDQzUlhkM1dWQk1OVnByVTJoSE1rVlhZbHB1TUZabU5IbC1mZyZjcmVhdGVfdGltZT0xNTY4OTIwMzc5Jm5vbmNlPTAuMDE0MzM1MDU2MTg0NzM5OTU4JnJvbGU9cHVibGlzaGVyJmV4cGlyZV90aW1lPTE1Njg5MjM5NzcmaW5pdGlhbF9sYXlvdXRfY2xhc3NfbGlzdD0=";
 
 // (optional) add server code here
-initializeSession();
+// initializeSession();
+// (optional) add server code here
+var SERVER_BASE_URL = 'https://opentoktiza.herokuapp.com';
+fetch(SERVER_BASE_URL + '/session').then(function (res) {
+    return res.json()
+}).then(function (res) {
+    apiKey = res.apiKey;
+    sessionId = res.sessionId;
+    token = res.token;
+    initializeSession();
+    console.log(apiKey);
+    console.log(sessionId);
+    console.log(token);
+}).catch(handleError);
+
+
 
 // Handling all of our errors here by alerting them
 function handleError(error) {
